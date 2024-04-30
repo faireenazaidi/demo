@@ -16,7 +16,7 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _key,
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.white70,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(70.0),
         child: AppBar(
@@ -68,7 +68,7 @@ class _HomepageState extends State<Homepage> {
                     children: [
                       CircleAvatar(
                         radius: 45,
-                        backgroundImage: AssetImage('images/girl...png',),
+                        backgroundImage: AssetImage('assets/girl...png',),
 
                       ),
                       Column(
@@ -134,11 +134,11 @@ class _HomepageState extends State<Homepage> {
                 leading: const Icon(Icons.message_sharp),
                 title: const Text("Complaint Form"),
                 onTap: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const SplashScreen(),
-                    ),
-                  );
+                  // Navigator.of(context).push(
+                  //   MaterialPageRoute(
+                  //     builder: (context) => const SplashScreen(),
+                  //   ),
+                  // );
                 },
               ),
               ListTile(
@@ -179,7 +179,9 @@ class _HomepageState extends State<Homepage> {
                 height: 150,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(bottomLeft:Radius.circular(50.0),bottomRight: Radius.circular(50.0)),
+
                   color: Colors.indigoAccent,
+
                 ),
                 width: MediaQuery.of(context).size.width,
 
@@ -195,7 +197,7 @@ class _HomepageState extends State<Homepage> {
                     children: [
                       CircleAvatar(
                         radius: 35,
-                        backgroundImage: AssetImage('images/girl...png',),
+                        backgroundImage: AssetImage('assets/girl...png',),
 
                       ),
                    Text("Faireena Zaidi",style: TextStyle(color: Colors.white),),
@@ -213,24 +215,86 @@ class _HomepageState extends State<Homepage> {
             ],
           ),
 Padding(
-  padding: const EdgeInsets.only(top:0.0,left:5.00,right:5.00),
+  padding: const EdgeInsets.only(top:12.0),
   child: Container(
+    width: 400,
+    height: 450,
+
     decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(5.00),border: Border.all(color:Colors.black),
+      borderRadius: BorderRadius.circular(40.00),border: Border.all(color:Colors.white),
 
     color: Colors.white,
     ),
     alignment: Alignment.topLeft,
    child:   Column(
      children: [
-       Text("My Details",style:TextStyle(fontSize:18)),
-       Text('21421'),
-     ],
+       Padding(
+         padding: const EdgeInsets.only(right: 290.0,top: 10),
+         child: Text("My Details",style:TextStyle(fontSize:18,fontWeight: FontWeight.bold)),
+       ),
+       Padding(
+         padding: const EdgeInsets.only(right:330.0),
+         child: Text('21421',style: TextStyle(fontWeight:FontWeight.bold),),
+       ),
+      const ListTile(
+       leading: const Icon(Icons.email_outlined,color:Colors.indigoAccent,),
+         title: const Text("Email",style: TextStyle(fontWeight: FontWeight.w500,color: Colors.black),),
+        subtitle: Text("faireenazaidi@gmail.com",style:TextStyle(color: Colors.grey)),
+        selected: true,
+       ),
+       Divider(
+         color: Colors.grey,
+         thickness: 1,
+         indent: 20,
+         endIndent: 20,
+
+       ),
+
+       const ListTile(
+    leading: const Icon(Icons.calendar_today,color: Colors.indigoAccent,),
+    title: const Text("DOB",style: TextStyle(fontWeight: FontWeight.w500,color: Colors.black),),
+      subtitle: Text("12-09-2003",style: TextStyle(color: Colors.grey),),
+      selected: true,
+    ),
+       Divider(
+         color: Colors.grey,
+         thickness: 1,
+         indent: 20,
+         endIndent: 20,
+
+       ),
+
+       const ListTile(
+         leading: const Icon(Icons.call,color: Colors.indigoAccent,),
+         title: const Text("Contact",style: TextStyle(fontWeight: FontWeight.w500,color: Colors.black),),
+         subtitle: Text("8173822136",style: TextStyle(color: Colors.grey),),
+         selected: true,
+       ),
+       Divider(
+         color: Colors.grey,
+         thickness: 1,
+         indent: 20,
+         endIndent: 20,
+
+       ),
+
+       const ListTile(
+         leading: const Icon(Icons.home_outlined,color: Colors.indigoAccent,),
+         title: const Text("Address",style: TextStyle(fontWeight: FontWeight.w500,color: Colors.black),),
+         subtitle: Text("38,laxshman prasad road,wazeerganj golaganj,Lucknow",style:TextStyle(color: Colors.grey),),
+         selected: true,
+       ),
+
+         ],
+
+       ),
+
+
    ),
 
 
   ),
-)
+
         ],
       ),
 

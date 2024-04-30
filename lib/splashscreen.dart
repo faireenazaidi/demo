@@ -1,17 +1,31 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+import 'homepage.dart';
 
+class MyHomePage extends StatefulWidget {
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  SplashScreenState createState() => SplashScreenState();
 }
-
-class _SplashScreenState extends State<SplashScreen> {
+class SplashScreenState extends State<MyHomePage> {
+  @override
+  void initState() {
+    super.initState();
+    Timer(Duration(seconds: 5),
+            ()=>Navigator.pushReplacement(context,
+            MaterialPageRoute(builder:
+                (context) => const Homepage()
+            )
+        )
+    );
+  }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body:Container(),
+    return Center(
+      child: Container(
+          color: Colors.indigoAccent,
+          child:FlutterLogo(size:1000,textColor: Colors.white70,)
+      ),
     );
   }
 }
