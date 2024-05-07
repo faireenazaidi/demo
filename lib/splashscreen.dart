@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-
+import 'package:untitled2/loginpage.dart';
 import 'homepage.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -11,10 +11,10 @@ class SplashScreenState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 5),
+    Timer(Duration(seconds: 2),
             ()=>Navigator.pushReplacement(context,
             MaterialPageRoute(builder:
-                (context) => const Homepage()
+                (context) => const LogInPage()
             )
         )
     );
