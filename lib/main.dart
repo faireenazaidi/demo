@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:untitled2/homepage.dart';
 import 'package:untitled2/splashscreen.dart';
 import 'package:http/http.dart' as http;
@@ -16,8 +17,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+     //theme: ThemeData.dark()
+
      home: MyHomePage()
 
         );

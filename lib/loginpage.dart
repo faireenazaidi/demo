@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'homepage.dart';
+import 'package:untitled2/homepage.dart';
+
+
 
 
 class LogInPage extends StatefulWidget {
@@ -16,13 +18,15 @@ class _LogInPageState extends State<LogInPage> {
   final ButtonStyle flatButtonStyle = TextButton.styleFrom(
     backgroundColor: Colors.indigoAccent,
     foregroundColor: Colors.black87,
-    minimumSize: Size(88, 36),
-    padding: EdgeInsets.symmetric(horizontal: 16),
+    minimumSize: const Size(88, 36),
+    padding: const EdgeInsets.symmetric(horizontal: 16),
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.all(Radius.circular(20)),
     ),
   );
   final formKey = GlobalKey<FormState>();
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController userpassController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return
@@ -31,7 +35,7 @@ class _LogInPageState extends State<LogInPage> {
         resizeToAvoidBottomInset: true,
         backgroundColor: Colors.white,
         appBar: AppBar(
-          shape: RoundedRectangleBorder(
+          shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.only(bottomRight: Radius.circular(50),
                   bottomLeft: Radius.circular(50))),
 
@@ -57,14 +61,14 @@ class _LogInPageState extends State<LogInPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
 
                   children: [
-                    Text("ERA UNIVERSITY",style: TextStyle(color:Colors.red,fontWeight: FontWeight.bold
+                    const Text("ERA UNIVERSITY",style: TextStyle(color:Colors.red,fontWeight: FontWeight.bold
                     ,fontSize: 20),),
 
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 8.0),
+                    const Padding(
+                      padding: EdgeInsets.only(bottom: 8.0),
                       child: Text("Student Management System",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),),
                     ),
-                    Align(
+                    const Align(
                       alignment: Alignment.centerLeft,
                       child: Text("Enrollment No./Student ID",
                         style:TextStyle(fontSize: 12,color: Colors.indigoAccent,fontWeight: FontWeight.bold,),
@@ -75,9 +79,10 @@ class _LogInPageState extends State<LogInPage> {
                       padding: const EdgeInsets.only(top: 10.0,bottom: 10),
 
                       child: TextFormField(
+                        controller: usernameController,
                         decoration: InputDecoration(
-                          hintText: "Enrollment No./Student ID",hintStyle: TextStyle(fontSize: 14),
-                          contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                          hintText: "Enrollment No./Student ID",hintStyle: const TextStyle(fontSize: 14),
+                          contentPadding: const EdgeInsets.symmetric(horizontal: 10),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20),
                               borderSide: BorderSide(color: Colors.grey.shade500)
@@ -109,10 +114,13 @@ class _LogInPageState extends State<LogInPage> {
                             return null;
                           }
                         },
+                        onChanged: (val){
+                          print(val);
+                        },
                       ),
                     ),
 
-                    Align(
+                    const Align(
                         alignment: Alignment.centerLeft,
                         child: Text("Password",style:TextStyle(fontSize: 12,
                           color: Colors.indigoAccent,fontWeight: FontWeight.bold,),)),
@@ -120,9 +128,10 @@ class _LogInPageState extends State<LogInPage> {
                     Padding(
                       padding: const EdgeInsets.only(bottom: 10.0,top: 10),
                       child: TextFormField(
+                     controller: userpassController,
                         decoration: InputDecoration(
-                          hintText: "Password",hintStyle: TextStyle(fontSize: 14),
-                          contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                          hintText: "Password",hintStyle: const TextStyle(fontSize: 14),
+                          contentPadding: const EdgeInsets.symmetric(horizontal: 10),
 
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
@@ -145,8 +154,8 @@ class _LogInPageState extends State<LogInPage> {
                               borderSide: BorderSide(color: Colors.grey.shade500)
                           ),
                         ),
-                    validator: (fairyna){
-                          if(fairyna!.isEmpty) {
+                    validator: (faireena){
+                          if(faireena!.isEmpty) {
                               return "Please Enter Your Password";
                             }
                           else {
@@ -160,26 +169,43 @@ class _LogInPageState extends State<LogInPage> {
                       child: TextButton(
                         style: flatButtonStyle,
                         onPressed: () {
-                          if(formKey.currentState!.validate()){
-                            Get.snackbar(
-                              'Alert!',
-                              'Login Failed',
-                              snackPosition: SnackPosition.BOTTOM,
-                              colorText: Colors.black,
-                              backgroundColor: Colors.white, borderRadius: 50.0,
+                          if(usernameController.text.toString()=='12345' && userpassController.text.toString()=='123'){
+                            // MaterialPageRoute(builder:
+                            //     (context) => const Homepage()
+                            //
+                            //
+                            // );
 
-
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const Homepage()),
                             );
                           }
+                          // if(formKey.currentState!.validate()){
+                          //   Get.snackbar(
+                          //      usernameController.text.toString(),
+                          //     userpassController.text.toString(),
+                          //     //'Login Failed',
+                          //     snackPosition: SnackPosition.BOTTOM,
+                          //     colorText: Colors.black,
+                          //     backgroundColor: Colors.white, borderRadius: 50.0,
+                          //   );
+                          //
+                          //
+                          // }else{
+                          //
+                          // }
+                         //Redirect to next page after login
+
                         },
-                        child: Text('Login',style: TextStyle(color: Colors.white),),
+                        child: const Text('Login',style: TextStyle(color: Colors.white),),
                       ),
                     ),
                     InkWell(
                         onTap: (){
-                          print('hello');
+                         // print('hello');
                         },
-                        child: Text('Forgot Password?', style: TextStyle(fontSize: 14,
+                        child: const Text('Forgot Password?', style: TextStyle(fontSize: 14,
                             color: Colors.indigoAccent,fontWeight: FontWeight.bold),))
                   ],
                 ),
