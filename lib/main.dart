@@ -1,12 +1,11 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled2/homepage.dart';
 import 'package:untitled2/splashscreen.dart';
 import 'package:http/http.dart' as http;
 
- var client = http.Client();
+var client = http.Client();
 void main() {
   runApp( MyApp());
 }

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:untitled2/splashscreen.dart';
-import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -300,5 +300,21 @@ Padding(
       ),
 
     );
+  }
+}
+loginDemoFunction()async{
+  Map<String,String>header={
+    "companyToken":"value"
+  };
+  Map<String,dynamic>body={
+    "key":"value123"
+  };
+  var response=await http.post(
+    Uri.parse("https://jsonplaceholder.typicode.com/users"),
+    headers: header,
+    body: body
+  );
+  if(response.statusCode==200){
+    //navigate to a different page;
   }
 }

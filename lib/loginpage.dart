@@ -5,8 +5,6 @@ import 'package:get/get.dart';
 import 'package:untitled2/homepage.dart';
 
 
-
-
 class LogInPage extends StatefulWidget {
   const LogInPage({super.key});
 
