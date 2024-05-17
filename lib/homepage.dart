@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:untitled2/Login%20Page/loginpage.dart';
 import 'package:untitled2/splashscreen.dart';
-import 'package:http/http.dart' as http;
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -10,7 +10,7 @@ class Homepage extends StatefulWidget {
   @override
   State<Homepage> createState() => _HomepageState();
 }
-
+//print(getUserList.toString())
 class _HomepageState extends State<Homepage> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
   @override
@@ -19,9 +19,9 @@ class _HomepageState extends State<Homepage> {
       key: _key,
       backgroundColor: Colors.white70,
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(70.0),
+        preferredSize: const Size.fromHeight(80.0),
         child: AppBar(
-            toolbarHeight: 70,
+            toolbarHeight: 100,
             backgroundColor: Colors.indigoAccent,
             centerTitle: true,
             actions: [
@@ -60,7 +60,7 @@ class _HomepageState extends State<Homepage> {
             // padding: EdgeInsets.zero,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Material(
+           Material(
                 color: Colors.indigoAccent,
                 child: Padding(
                   padding:
@@ -72,18 +72,7 @@ class _HomepageState extends State<Homepage> {
                         backgroundImage: AssetImage('assets/girl...png',),
 
                       ),
-                      Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 18.0),
-                            child: Text(
-                              "Faireena Zaidi",
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.normal,color: Colors.white),
-                            ),
-                          ),
-                        ],
-                      ),
+
                     ],
                   ),
                 ),
@@ -163,9 +152,11 @@ class _HomepageState extends State<Homepage> {
                             textStyle: TextStyle(
                                 fontSize: 15, fontWeight: FontWeight.bold)),
                         onPressed: () {},
-                        child: Text(
+                        child:
+                        Text(
                           "Logout",
                           style: TextStyle(color: Colors.white),
+
                         )),
                   ),
                 ),
@@ -174,10 +165,12 @@ class _HomepageState extends State<Homepage> {
       ),
       body: Column(
         children: [
+         //Text(getUserList.toString()),
+        // Text(getUserList['login'][0]['studentName'].toString()),
           Stack(
             children: [
               Container(
-                height: 150,
+                height: 160,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(bottomLeft:Radius.circular(50.0),bottomRight: Radius.circular(50.0)),
 
@@ -201,8 +194,10 @@ class _HomepageState extends State<Homepage> {
                         backgroundImage: AssetImage('assets/girl...png',),
 
                       ),
-                   Text("Faireena Zaidi",style: TextStyle(color: Colors.white),),
-                      Text("Student ID: 2021070104009",style: TextStyle(color: Colors.white),),
+                      Text("Student Name: "+ getUserList['login'][0]['studentName'].toString(),style: TextStyle(color: Colors.white)),
+                      Text("Student ID: "+ getUserList['login'][0]['enrollmentNo'].toString(),style: TextStyle(color: Colors.white)),
+                      Text("Punchiong ID: "+ getUserList['login'][0]['userName'].toString(),style: TextStyle(color: Colors.white)),
+                     // Text("Student ID: 2021070104009",style: TextStyle(color: Colors.white),),
                       Text("Punching ID: 21421",style: TextStyle(color: Colors.white),),
                     ],
                   ),
@@ -215,6 +210,7 @@ class _HomepageState extends State<Homepage> {
 
             ],
           ),
+
 Padding(
   padding: const EdgeInsets.only(top:12.0),
   child: Container(
@@ -235,12 +231,16 @@ Padding(
        ),
        Padding(
          padding: const EdgeInsets.only(right:330.0),
-         child: Text('21421',style: TextStyle(fontWeight:FontWeight.bold),),
+         child:
+
+         Text(getUserList['login'][0]['userId'].toString()),
+
        ),
-      const ListTile(
+
+       ListTile(
        leading: const Icon(Icons.email_outlined,color:Colors.indigoAccent,),
-         title: const Text("Email",style: TextStyle(fontWeight: FontWeight.w500,color: Colors.black),),
-        subtitle: Text("faireenazaidi@gmail.com",style:TextStyle(color: Colors.grey)),
+         title: const Text("College Name",style: TextStyle(fontWeight: FontWeight.w500,color: Colors.black),),
+        subtitle: Text(getUserList['login'][0]['collegeName'].toString(),style: TextStyle(color: Colors.grey)),
         selected: true,
        ),
        Divider(
@@ -300,21 +300,5 @@ Padding(
       ),
 
     );
-  }
-}
-loginDemoFunction()async{
-  Map<String,String>header={
-    "companyToken":"value"
-  };
-  Map<String,dynamic>body={
-    "key":"value123"
-  };
-  var response=await http.post(
-    Uri.parse("https://jsonplaceholder.typicode.com/users"),
-    headers: header,
-    body: body
-  );
-  if(response.statusCode==200){
-    //navigate to a different page;
   }
 }

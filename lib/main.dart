@@ -5,6 +5,8 @@ import 'package:untitled2/homepage.dart';
 import 'package:untitled2/splashscreen.dart';
 import 'package:http/http.dart' as http;
 
+import 'JsonData/jsonView.dart';
+
 var client = http.Client();
 void main() {
   runApp( MyApp());
@@ -20,7 +22,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
      //theme: ThemeData.dark()
 
-     home: MyHomePage()
+     // home: MyHomePage()
+     home: DemoView()
 
         );
 

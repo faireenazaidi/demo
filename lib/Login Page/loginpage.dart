@@ -1,8 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:untitled2/homepage.dart';
+import 'package:http/http.dart' as http;
+
 
 
 class LogInPage extends StatefulWidget {
@@ -23,8 +27,8 @@ class _LogInPageState extends State<LogInPage> {
     ),
   );
   final formKey = GlobalKey<FormState>();
-  TextEditingController usernameController = TextEditingController();
-  TextEditingController userpassController = TextEditingController();
+  TextEditingController usernameController = TextEditingController(text: '2021020100074');
+  TextEditingController userPassController = TextEditingController(text: "12345");
   @override
   Widget build(BuildContext context) {
     return
@@ -33,6 +37,7 @@ class _LogInPageState extends State<LogInPage> {
         resizeToAvoidBottomInset: true,
         backgroundColor: Colors.white,
         appBar: AppBar(
+
           shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.only(bottomRight: Radius.circular(50),
                   bottomLeft: Radius.circular(50))),
@@ -126,7 +131,7 @@ class _LogInPageState extends State<LogInPage> {
                     Padding(
                       padding: const EdgeInsets.only(bottom: 10.0,top: 10),
                       child: TextFormField(
-                     controller: userpassController,
+                     controller: userPassController,
                         decoration: InputDecoration(
                           hintText: "Password",hintStyle: const TextStyle(fontSize: 14),
                           contentPadding: const EdgeInsets.symmetric(horizontal: 10),
@@ -166,35 +171,8 @@ class _LogInPageState extends State<LogInPage> {
                       padding: const EdgeInsets.only(top: 9.0),
                       child: TextButton(
                         style: flatButtonStyle,
-                        onPressed: () {
-                          if(usernameController.text.toString()=='12345' && userpassController.text.toString()=='123'){
-                            // MaterialPageRoute(builder:
-                            //     (context) => const Homepage()
-                            //
-                            //
-                            // );
-
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const Homepage()),
-                            );
-                          }
-                          // if(formKey.currentState!.validate()){
-                          //   Get.snackbar(
-                          //      usernameController.text.toString(),
-                          //     userpassController.text.toString(),
-                          //     //'Login Failed',
-                          //     snackPosition: SnackPosition.BOTTOM,
-                          //     colorText: Colors.black,
-                          //     backgroundColor: Colors.white, borderRadius: 50.0,
-                          //   );
-                          //
-                          //
-                          // }else{
-                          //
-                          // }
-                         //Redirect to next page after login
-
+                        onPressed: () async {
+                          loginapi();
                         },
                         child: const Text('Login',style: TextStyle(color: Colors.white),),
                       ),
@@ -216,5 +194,50 @@ class _LogInPageState extends State<LogInPage> {
     );
 
   }
+
+
+
+  loginapi() async {
+
+    var headers = {
+      'Content-Type': 'application/json'
+    };
+    var request = http.Request('POST', Uri.parse('http://182.156.200.178:168/API/Login/LoginAuthentication'));
+    request.body = json.encode({
+      "userName": usernameController.text.toString(),
+      "password": userPassController.text.toString(),
+    });
+    request.headers.addAll(headers);
+
+    http.StreamedResponse response = await request.send();
+
+    if (response.statusCode == 200) {
+   String responseBody =await response.stream.bytesToString();
+   print(responseBody);
+   var data = jsonDecode(responseBody);
+   print("ApiResponse:"+data.toString());
+
+   updateUserList = data['responseValue'];
+   print(getUserList.toString());
+    Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => const Homepage()),
+    );
+    }
+    else {
+    print(response.reasonPhrase);
+    }
+  }
 }
+
+
+Map userList = {};
+Map get getUserList => userList;
+set updateUserList(Map val){
+  userList = val;
+}
+
+
+
+
 
