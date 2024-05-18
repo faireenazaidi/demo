@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:untitled2/JsonData/jsonView.dart';
 import 'package:untitled2/Login%20Page/loginpage.dart';
 import 'package:untitled2/splashscreen.dart';
+import 'package:untitled2/statusView/springboardView.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -30,12 +33,14 @@ class _HomepageState extends State<Homepage> {
                 child: Column(
                   children: [
                     IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.camera_alt_outlined,
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const DemoView()),);
+                          },
+                      icon: const Icon(Icons.info_outline_rounded,
                           color: Colors.white),
                     ),
                     const Text(
-                      "Attendance",
+                      "Information",
                       style: TextStyle(color: Colors.white),
                     )
                   ],
@@ -136,6 +141,14 @@ class _HomepageState extends State<Homepage> {
                 title: const Text("Change Password"),
                 onTap: () {
                   Navigator.pop(context);
+                },
+              ),
+              ListTile(
+
+                leading: const Icon(Icons.stacked_bar_chart),
+                title: const Text("Backlog Status"),
+                onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) =>  SpringboardView()));
                 },
               ),
               Padding(

@@ -6,6 +6,7 @@ import 'package:untitled2/splashscreen.dart';
 import 'package:http/http.dart' as http;
 
 import 'JsonData/jsonView.dart';
+import 'Login Page/loginpage.dart';
 
 var client = http.Client();
 void main() {
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
      //theme: ThemeData.dark()
 
      // home: MyHomePage()
-     home: DemoView()
+     home: LogInPage()
 
         );
 

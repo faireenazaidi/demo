@@ -62,6 +62,8 @@ class JasonController extends GetxController {
       "image": "https://media.istockphoto.com/id/1471845315/photo/happy-portrait-or-business-woman-taking-a-selfie-in-office-building-for-a-social-media.jpg?s=612x612&w=0&k=20&c=AOylBL01joI0zphCAFr6YVrsOgp_jd2XtVUychLXYho="
     }
   ];
+
+
 /*{
       "name": "Adil Abro",
       "language": "Sindhi",

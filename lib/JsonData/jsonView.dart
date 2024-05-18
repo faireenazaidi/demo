@@ -6,10 +6,10 @@ import 'package:get/get.dart';
 
 import 'jsonController.dart';
 
+
 class DemoView extends StatefulWidget {
 
   const DemoView({super.key});
-
 
   @override
   State<DemoView> createState() => _DemoViewState();
@@ -25,9 +25,17 @@ class _DemoViewState extends State<DemoView> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
+      backgroundColor: Colors.white70,
       appBar: AppBar(
-        leading: const Icon(Icons.arrow_back, color: Colors.white,),
+
+        leading: InkWell(
+          onTap: (){
+           Navigator.pop(context);
+          },
+            child: const Icon(Icons.arrow_back, color: Colors.white,)),
+
         backgroundColor: Colors.indigoAccent,
         title: const Text(
           "Flutter Listview with Json", style: TextStyle(color: Colors.white),),
@@ -41,7 +49,7 @@ class _DemoViewState extends State<DemoView> {
           return Card(
 
 
-           // color: Colors.red,
+           color: Colors.white,
 
             child: Padding(
               padding: const EdgeInsets.only(top: 32,bottom: 32,left: 16,right: 16),
@@ -49,7 +57,7 @@ class _DemoViewState extends State<DemoView> {
                 title: Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 200.0),
+                      padding: const EdgeInsets.only(bottom: 150.0),
                       child: Container(
                         width: 100,
                         height: 100,
@@ -82,7 +90,7 @@ class _DemoViewState extends State<DemoView> {
                             child: Text(jsoncontroller.demoList[index]['name'.toString()],style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold,),),
                           ),
                           Divider(
-                            color: Colors.grey,
+                            color: Colors.black,
                             thickness: 1,
                             indent: 20,
                             endIndent: 20,
@@ -91,11 +99,11 @@ class _DemoViewState extends State<DemoView> {
                           const SizedBox(height: 20,),
                           Padding(
                             padding: const EdgeInsets.only(bottom: 10),
-                            child: Text("Language: "+jsoncontroller.demoList[index]['language'.toString()],style: const TextStyle(fontSize: 16),),
+                            child: Text("Language: "+jsoncontroller.demoList[index]['language'.toString()],style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w500),),
                           ),
-                          Text(jsoncontroller.demoList[index]['id'.toString()]),
+                          Text("ID: "+jsoncontroller.demoList[index]['id'.toString()],style: TextStyle(fontSize: 14,fontWeight: FontWeight.w500),),
 
-                          Text(jsoncontroller.demoList[index]['bio'.toString()],style: const TextStyle(fontSize: 16),overflow: TextOverflow.clip,textAlign: TextAlign.justify,textDirection: TextDirection.ltr,),
+                          Text(jsoncontroller.demoList[index]['bio'.toString()],style: const TextStyle(fontSize: 14,fontWeight:FontWeight.w500 ),overflow: TextOverflow.clip,textAlign: TextAlign.justify,textDirection: TextDirection.ltr,),
 
 
                         ],
