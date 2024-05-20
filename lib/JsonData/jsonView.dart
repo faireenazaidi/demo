@@ -3,9 +3,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'dart:convert';
 import 'jsonController.dart';
-
 
 class DemoView extends StatefulWidget {
 
@@ -104,7 +103,7 @@ class _DemoViewState extends State<DemoView> {
                           Text("ID: "+jsoncontroller.demoList[index]['id'.toString()],style: TextStyle(fontSize: 14,fontWeight: FontWeight.w500),),
 
                           Text(jsoncontroller.demoList[index]['bio'.toString()],style: const TextStyle(fontSize: 14,fontWeight:FontWeight.w500 ),overflow: TextOverflow.clip,textAlign: TextAlign.justify,textDirection: TextDirection.ltr,),
-
+                         //Text(jsoncontroller.demoList[index]['version'.toString()],style: const TextStyle(fontSize: 14,fontWeight:FontWeight.w500 ),overflow: TextOverflow.clip,textAlign: TextAlign.justify,textDirection: TextDirection.ltr,),
 
                         ],
 
