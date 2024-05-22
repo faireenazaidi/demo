@@ -37,7 +37,7 @@ class _SpringboardViewState extends State<SpringboardView> {
        title: Column(
 
          crossAxisAlignment: CrossAxisAlignment.start,
-         children: [
+         children: const [
            Text("Faireena Zaidi"),
            Text("flutter developer",style: TextStyle(fontSize: 15),)
 
@@ -46,12 +46,11 @@ class _SpringboardViewState extends State<SpringboardView> {
         leading: Padding(
           padding: const EdgeInsets.only(left:8.0),
           child: CircleAvatar(
-            child: Icon(
-              Icons.person,
+            backgroundImage: NetworkImage('https://img.freepik.com/premium-vector/office-girl-vector-illustration-cartoonish-office-girl_890100-772.jpg'),
             ),
           ),
         ),
-        ),
+
 body:
 
 
@@ -59,21 +58,21 @@ Padding(
   padding: const EdgeInsets.all(8.0),
   child: Column(
     children: [
-        Container(
-          decoration: BoxDecoration(
-            color: Colors.grey[200],
-            borderRadius: BorderRadius.circular(20.0), // Rounded corners
-            border: Border.all(color: Colors.grey),  // Optional: Add border
-          ),
-
-          child: TextField(
-            decoration: InputDecoration(
-            border: InputBorder.none,
-            labelText: 'Search Here...',
-            prefixIcon: Icon(Icons.search,color: Colors.indigo,),
-          ),
-                ),
-      ),
+         TextField(
+          decoration: InputDecoration(
+            contentPadding: EdgeInsets.symmetric(vertical: 0.0),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(20.0),
+              borderSide: BorderSide(color: Colors.grey, width: 2.0),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(20.0),
+              borderSide: BorderSide(color: Colors.grey, width: 2.0),
+            ),
+          labelText: 'Search Here...',
+          prefixIcon: Icon(Icons.search,color: Colors.indigo,),
+        ),
+              ),
 
      const Padding(
        padding: EdgeInsets.only(right: 250.0),
@@ -82,7 +81,7 @@ Padding(
 
 
       SizedBox(
-        height: 150,
+        height: 120,
         width: MediaQuery.of(context).size.width,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
@@ -91,12 +90,12 @@ Padding(
           itemBuilder: (context, index) {
             var data = springboardController.abc[index];
           return  Container(
-                    width: 148,
-                    margin: EdgeInsets.all(20.0),
+                    width: 130,
+                    margin: EdgeInsets.all(12.0),
 
                     decoration: BoxDecoration(
                       color: springboardController.abc[index]['color'],
-                      borderRadius: BorderRadius.circular(20.0),
+                      borderRadius: BorderRadius.circular(15.0),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -105,9 +104,13 @@ Padding(
                         Padding(
                           padding: const EdgeInsets.all(4.0),
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Icon(data['icon'],color:Colors.white,size:40),
-                              Text(data['totalTask'].toString(),style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold),),
+                              Icon(data['icon'],color:Colors.white,size:30),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 20.0),
+                                child: Text(data['totalTask'].toString(),style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.bold),),
+                              ),
 
                             ],
                           ),
@@ -136,74 +139,111 @@ Padding(
          ),
       Padding(
         padding: const EdgeInsets.only(bottom: 20.0),
-        child: Container(
-          decoration: BoxDecoration(
-        color: Colors.grey[200],
-      borderRadius: BorderRadius.circular(20.0), // Rounded corners
-      border: Border.all(color: Colors.grey),  // Optional: Add border
-      ),
+        child: TextField(decoration: InputDecoration(
+          contentPadding: EdgeInsets.symmetric(vertical: 0.0),
+          border:OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20),
+          borderSide: BorderSide(color: Colors.grey,width: 2.0),
 
-          child: TextField(decoration: InputDecoration(
-            border: InputBorder.none,
-            labelText: 'Search Here...',
-            prefixIcon: Icon(Icons.search,color: Colors.indigo,),
-          ),),
-        ),
+          ),
+
+          labelText: 'Search Here...',
+          prefixIcon: Icon(Icons.search,color: Colors.indigo,),
+        ),),
       ),
       Expanded(
         child: ListView.builder(
-          itemCount: springboardController.itemList.length,
+          itemCount: springboardController.employeName.length,
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
-                height: 150,
+               // height: 150,
                  width: MediaQuery.of(context).size.width,
-
                 decoration: BoxDecoration(
-                  color: Colors.red,
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(20.0),
+                  boxShadow: [BoxShadow(
+                      color: Colors.black.withOpacity(0.2),
+                      spreadRadius: 6,
+                      blurRadius: 9,
+                      offset: Offset(0,3)
+                  )],
 
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+
+                child: Row(
                   children: [
-                  Row(
-                    children: [
-                      CircleAvatar(
-                            child: Icon(
-                              Icons.person,
-                            ),
-                          ),
-                      Text(springboardController.employeName[index]['name'].toString(),),
-                    ],
-                  ),
-                    Text(springboardController.employeName[index]['identity'].toString(),),
-                    Text(springboardController.employeName[index]['work'].toString(),),
-                    Divider(
-                      color: Colors.black,
-                      thickness: 1,
-                      indent: 20,
-                      endIndent: 20,
-
+                    Container(
+                      height: 100,width: 3,
+                      color: Colors.red,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(DateTime.now().toString()),
-                        Container(
-                          child: Center(child: Text("In progress",)),
-                          height: 30,
-                          width: 100,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            color: Colors.white,
-
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 15.0,top: 5),
+                            child: CircleAvatar(
+                                  backgroundImage: NetworkImage(springboardController.employeName[index]['image'].toString()),
+                                ),
                           ),
-                        )
+                          Padding(
+                            padding: const EdgeInsets.only(left: 18.0),
+                            child: Text(springboardController.employeName[index]['name'].toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
+                          ),
+                        ],
+                      ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 60),
+                          child: Text(springboardController.employeName[index]['identity'].toString(),style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold, ),),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 60.0),
+                          child: Text(springboardController.employeName[index]['work'].toString(),),
+                        ),
+                        Divider(
+                          color: Colors.indigo,
+                          thickness: 1,
+                          indent: 10,
+                          endIndent: 10,
 
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8.0,right: 8),
+                          child: Container(
+                            height: 1,
+                            width: Get.width*0.85,
+                            color: Colors.indigo,
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(9.0),
+                              child: Text('05-17-2024'),
+                            ),
+                            SizedBox(width: Get.width*0.38,),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                child: Center(child: Text("In progress",style: TextStyle(color: Colors.blue),)),
+                                height: 30,
+                                width: 100,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: Colors.grey[200],
+
+                                ),
+                              ),
+                            )
+
+                          ],
+                        )
                       ],
-                    )
+                    ),
                   ],
                 )
                 // ListTile(
@@ -254,8 +294,9 @@ Padding(
       ),
 ),
       bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
+        items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
+
             icon: Icon(Icons.home_filled,color:Colors.grey),
             label: 'Home',
           ),

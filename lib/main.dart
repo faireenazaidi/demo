@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled2/homepage.dart';
@@ -20,11 +19,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+        theme: ThemeData.light(),
+        darkTheme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
-     //theme: ThemeData.dark()
 
      // home: MyHomePage()
-     home: LogInPage()
+     home: MyHomePage()
 
         );
 
