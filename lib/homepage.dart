@@ -7,6 +7,8 @@ import 'package:untitled2/Login%20Page/loginpage.dart';
 import 'package:untitled2/splashscreen.dart';
 import 'package:untitled2/statusView/springboardView.dart';
 
+import 'StoryMaster/storyView.dart';
+
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
 
@@ -152,6 +154,16 @@ class _HomepageState extends State<Homepage> {
                 Navigator.push(context, MaterialPageRoute(builder: (context) =>  SpringboardView()));
                   },
                 ),
+                ListTile(
+                  leading: const Icon (Icons.history),
+                  title: const Text("Story Mastor"),
+                  onTap:(){
+                    Navigator.push(context,MaterialPageRoute(builder:(context)=> StoryView()));
+                }
+                ),
+
+
+
                 Padding(
                   padding: const EdgeInsets.only(right: 8.0),
                   child: Align(

@@ -169,7 +169,6 @@ Padding(
                       blurRadius: 9,
                       offset: Offset(0,3)
                   )],
-
                 ),
 
                 child: Row(

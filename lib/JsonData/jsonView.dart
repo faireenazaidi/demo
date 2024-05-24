@@ -61,15 +61,6 @@ class _DemoViewState extends State<DemoView> {
                         width: 100,
                         height: 100,
                         decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                           // begin: Alignment.centerLeft,
-                            //end: Alignment.centerRight,
-                            colors: [
-                              Color(0xFF3366FF),
-                              Color(0xFF00CCFF),
-                            ],
-                          ),
-
                           borderRadius: BorderRadius.circular(100/2),
                               image:  DecorationImage(
                                 fit: BoxFit.cover,
