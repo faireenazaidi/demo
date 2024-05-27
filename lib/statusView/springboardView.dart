@@ -23,7 +23,7 @@ class _SpringboardViewState extends State<SpringboardView> {
       appBar: AppBar(
         actions: [
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_forward,
               color: Colors.black,
             ),
@@ -34,17 +34,17 @@ class _SpringboardViewState extends State<SpringboardView> {
         ],
         toolbarHeight:60,
         backgroundColor: Colors.white,
-       title: Column(
+       title: const Column(
 
          crossAxisAlignment: CrossAxisAlignment.start,
-         children: const [
+         children: [
            Text("Faireena Zaidi"),
            Text("flutter developer",style: TextStyle(fontSize: 15),)
 
          ],
        ),
-        leading: Padding(
-          padding: const EdgeInsets.only(left:8.0),
+        leading: const Padding(
+          padding: EdgeInsets.only(left:8.0),
           child: CircleAvatar(
             backgroundImage: NetworkImage('https://img.freepik.com/premium-vector/office-girl-vector-illustration-cartoonish-office-girl_890100-772.jpg'),
             ),
@@ -60,17 +60,17 @@ Padding(
     children: [
          TextField(
           decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(vertical: 0.0),
+            contentPadding: const EdgeInsets.symmetric(vertical: 0.0),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20.0),
-              borderSide: BorderSide(color: Colors.grey, width: 2.0),
+              borderSide: const BorderSide(color: Colors.grey, width: 2.0),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20.0),
-              borderSide: BorderSide(color: Colors.grey, width: 2.0),
+              borderSide: const BorderSide(color: Colors.grey, width: 2.0),
             ),
           labelText: 'Search Here...',
-          prefixIcon: Icon(Icons.search,color: Colors.indigo,),
+          prefixIcon: const Icon(Icons.search,color: Colors.indigo,),
         ),
               ),
 
@@ -91,7 +91,7 @@ Padding(
             var data = springboardController.abc[index];
           return  Container(
                     width: 130,
-                    margin: EdgeInsets.all(12.0),
+                    margin: const EdgeInsets.all(12.0),
 
                     decoration: BoxDecoration(
                       color: springboardController.abc[index]['color'],
@@ -109,7 +109,7 @@ Padding(
                               Icon(data['icon'],color:Colors.white,size:30),
                               Padding(
                                 padding: const EdgeInsets.only(right: 20.0),
-                                child: Text(data['totalTask'].toString(),style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.bold),),
+                                child: Text(data['totalTask'].toString(),style: const TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.bold),),
                               ),
 
                             ],
@@ -117,11 +117,11 @@ Padding(
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 20.0),
-                          child: Text(data['name'].toString(),style: TextStyle(color: Colors.white,fontSize: 14),),
+                          child: Text(data['name'].toString(),style: const TextStyle(color: Colors.white,fontSize: 14),),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 20.0),
-                          child: Text(data['topic'].toString(),style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 17),),
+                          child: Text(data['topic'].toString(),style: const TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 17),),
                         ),
 
                       ],
@@ -140,15 +140,15 @@ Padding(
       Padding(
         padding: const EdgeInsets.only(bottom: 20.0),
         child: TextField(decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(vertical: 0.0),
+          contentPadding: const EdgeInsets.symmetric(vertical: 0.0),
           border:OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
-          borderSide: BorderSide(color: Colors.grey,width: 2.0),
+          borderSide: const BorderSide(color: Colors.grey,width: 2.0),
 
           ),
 
           labelText: 'Search Here...',
-          prefixIcon: Icon(Icons.search,color: Colors.indigo,),
+          prefixIcon: const Icon(Icons.search,color: Colors.indigo,),
         ),),
       ),
       Expanded(
@@ -167,7 +167,7 @@ Padding(
                       color: Colors.black.withOpacity(0.2),
                       spreadRadius: 6,
                       blurRadius: 9,
-                      offset: Offset(0,3)
+                      offset: const Offset(0,3)
                   )],
                 ),
 
@@ -190,19 +190,19 @@ Padding(
                           ),
                           Padding(
                             padding: const EdgeInsets.only(left: 18.0),
-                            child: Text(springboardController.employeName[index]['name'].toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
+                            child: Text(springboardController.employeName[index]['name'].toString(),style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
                           ),
                         ],
                       ),
                         Padding(
                           padding: const EdgeInsets.only(left: 60),
-                          child: Text(springboardController.employeName[index]['identity'].toString(),style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold, ),),
+                          child: Text(springboardController.employeName[index]['identity'].toString(),style: const TextStyle(fontSize: 16,fontWeight: FontWeight.bold, ),),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 60.0),
                           child: Text(springboardController.employeName[index]['work'].toString(),),
                         ),
-                        Divider(
+                        const Divider(
                           color: Colors.indigo,
                           thickness: 1,
                           indent: 10,
@@ -220,15 +220,15 @@ Padding(
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.all(9.0),
+                            const Padding(
+                              padding: EdgeInsets.all(9.0),
                               child: Text('05-17-2024'),
                             ),
                             SizedBox(width: Get.width*0.38,),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Container(
-                                child: Center(child: Text("In progress",style: TextStyle(color: Colors.blue),)),
+                                child: const Center(child: Text("In progress",style: TextStyle(color: Colors.blue),)),
                                 height: 30,
                                 width: 100,
                                 decoration: BoxDecoration(

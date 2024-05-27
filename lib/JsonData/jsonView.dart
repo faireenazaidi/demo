@@ -77,7 +77,7 @@ class _DemoViewState extends State<DemoView> {
 
                           Padding(
                             padding: const EdgeInsets.only(top: 0.0),
-                            child: Text(jsoncontroller.demoList[index]['name'.toString()],style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold,),),
+                            child: Text(jsoncontroller.demoList[index]['name'].toString(),style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold,),),
                           ),
                           Divider(
                             color: Colors.black,
@@ -86,7 +86,7 @@ class _DemoViewState extends State<DemoView> {
                             endIndent: 20,
 
                           ),
-                          const SizedBox(height: 20,),
+                          const SizedBox(height: 10,),
                           Padding(
                             padding: const EdgeInsets.only(bottom: 10),
                             child: Text("Language: "+jsoncontroller.demoList[index]['language'.toString()],style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w500),),

@@ -6,6 +6,7 @@ import 'package:untitled2/JsonData/jsonView.dart';
 import 'package:untitled2/Login%20Page/loginpage.dart';
 import 'package:untitled2/splashscreen.dart';
 import 'package:untitled2/statusView/springboardView.dart';
+import 'package:untitled2/subjectWise.dart';
 
 import 'StoryMaster/storyView.dart';
 
@@ -109,7 +110,7 @@ class _HomepageState extends State<Homepage> {
                       leading: const Icon(Icons.edit_calendar),
                       title: const Text("Subject Wise Attendance"),
                       onTap: () {
-                        Navigator.pop(context);
+                        Navigator.push(context,MaterialPageRoute(builder:(context)=> SubjectWise()));
                       },
                     ),
                     ListTile(
