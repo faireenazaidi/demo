@@ -36,6 +36,7 @@ dependencies:
   http: ^1.2.0
   get: ^4.6.6
   fluttertoast: ^8.2.5
+  custom_searchable_dropdown: ^2.1.1
 
 
 dev_dependencies:

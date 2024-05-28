@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
+import 'package:untitled2/StoryMaster/AddProject/AddProjectView.dart';
 import 'package:untitled2/StoryMaster/storyController.dart';
 
 
@@ -165,6 +166,7 @@ class _StoryViewState extends State<StoryView> {
         child: Icon(Icons.add,color: Colors.white,),
         backgroundColor: Colors.indigoAccent,
         onPressed: () {
+          Navigator.push(context,MaterialPageRoute(builder:(context)=> AddProjectView()));
 
       },
 
