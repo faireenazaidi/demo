@@ -55,8 +55,8 @@ class _MyCustomSDState extends State<MyCustomSD> {
 
   @override
   Widget build(BuildContext context) {
-    OutlineInputBorder border=OutlineInputBorder(
-      borderRadius: const BorderRadius.all(Radius.circular(5)),
+    OutlineInputBorder border=const OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(5)),
       borderSide: BorderSide(
           color: Colors.grey,
           width: 1
@@ -67,36 +67,35 @@ class _MyCustomSDState extends State<MyCustomSD> {
       searchBarHeight: 40,
       padding: const EdgeInsets.all(0),
       initialValue: widget.initialValue,
-      primaryColor:Colors.indigoAccent,
+      primaryColor:Colors.grey,
       hideSearch: widget.hideSearch?? false,
       menuHeight: widget.height??80,
       menuMode: true,
-      labelStyle: TextStyle(fontSize: 17),
+      labelStyle: const TextStyle(fontSize: 17),
       items: widget.listToSearch,
       label: widget.label??'Select Name',
-      dropdownItemStyle: TextStyle(fontSize: 17),
+      dropdownItemStyle: const TextStyle(fontSize: 16),
 
 
       dropDownMenuItems: widget.listToSearch.map((item) {
         return item[widget.valFrom];
       }).toList(),
       onChanged: (val){
+
         widget.onChanged(val);
+
       },
-      decoration: BoxDecoration(
-          boxShadow: [BoxShadow(
-              color: Colors.black.withOpacity(0.3),
-              spreadRadius: 5,
-              blurRadius: 10,
-              offset: Offset(0,4)
-          )],
-          borderRadius: BorderRadius.circular(8),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(5.0),
           color: Colors.white,
-          border: Border.all(
-              color: Colors.transparent,
-              width: 1
-          )
-      ),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.grey,
+              offset: Offset(0.0, 1.0), //(x,y)
+              blurRadius: 6.0,
+            ),
+          ],
+        )
 
 
     );
