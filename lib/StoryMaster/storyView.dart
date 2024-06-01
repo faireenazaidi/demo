@@ -1,6 +1,9 @@
 
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:untitled2/StoryMaster/AddProject/AddProjectView.dart';
 import 'package:untitled2/StoryMaster/storyController.dart';
@@ -81,7 +84,7 @@ class _StoryViewState extends State<StoryView> {
                        ),
 
                        child: Padding(
-                         padding: const EdgeInsets.all(8.0),
+                         padding:  EdgeInsets.all(8.0),
                          child: Column(
                            crossAxisAlignment: CrossAxisAlignment.start,
                            children: [
@@ -90,14 +93,33 @@ class _StoryViewState extends State<StoryView> {
                                 children: [
 
                                  Text(storyController.getStoryList[index]['projectName'].toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16,),),
-                                  Row(
+                                   Row(
                                     children: [
                                       Icon(Icons.menu,size:20,weight: 0.1,color: Colors.blue,),
                                       SizedBox(
                            width: 10,
                          ),
+                                      InkWell(
+                                        onTap: (){
+                                          print("fffffffffffffffffff");
+                                          Get.defaultDialog(
+                                            title: "Are you sure!",
+                                            middleText: "You want to delete this file?",
+                                            actions: [
+                                              TextButton(onPressed: (){
+                                                Navigator.pop(context);
+                                              },
+                                                  child: Text("Cancel")),
+                                              TextButton(onPressed: (){
+                                                storyController.deleteData();
 
-                                      Icon(Icons.restore_from_trash_rounded,size:20,weight: 0.1,color: Colors.red,),
+                                              }, child: Text("Ok",style: TextStyle(color: Colors.red),))
+                                            ],
+                                          );
+                                        },
+                                          child: Icon(Icons.delete,color: Colors.red,)),
+
+
                                     ],
 
                                   ),
@@ -105,7 +127,7 @@ class _StoryViewState extends State<StoryView> {
                                 ]
                                ),
                              Text(storyController.getStoryList[index]['moduleName'].toString(),style: TextStyle(fontSize: 14,color: Colors.grey,fontWeight: FontWeight.bold),),
-                             Divider(
+                             const Divider(
                                thickness: 0.7,
                                color: Colors.grey,
                              ),
@@ -114,14 +136,14 @@ class _StoryViewState extends State<StoryView> {
                              Row(
                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                children: [
-                                Row(
+                                const Row(
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsets.only(left: 2.0,top: 20),
+                                      padding: EdgeInsets.only(left: 2.0,top: 20),
                                       child: Icon(Icons.calendar_month,color: Colors.green,),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(top: 20.0,left: 10),
+                                      padding: EdgeInsets.only(top: 20.0,left: 10),
                                       child: Text("2022-09-28",style: TextStyle(color: Colors.grey),),
                                     ),
                                   ],
@@ -175,5 +197,5 @@ class _StoryViewState extends State<StoryView> {
 
     );
   }
-
 }
+

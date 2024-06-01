@@ -25,38 +25,16 @@ class _SubjectWiseState extends State<SubjectWise> {
         backgroundColor: Colors.indigoAccent,
       ),
       body:
-        Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Container(
-                height: 150,
-                width: 370,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: DropdownButton<String>(
-                  dropdownColor: Colors.indigoAccent,
-                  elevation: 12,
-                  borderRadius: BorderRadius.circular(20),
-                  items: <String>['One', 'Two', 'Three', 'Four'].map((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
-                  onChanged: (String? newValue) {
-                    setState(() {
-                    });
-                  },
-                  isExpanded: true,
-                ),
-              ),
-            ),
-    ],
-    ),
+       Column(
+         mainAxisAlignment: MainAxisAlignment.start,
+         children: [
+           Row(
+             mainAxisAlignment: MainAxisAlignment.start
+             ,
+
+           )
+         ],
+       )
 
     );
   }

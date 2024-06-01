@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:untitled2/StoryMaster/AddProject/AddProjectController.dart';
  import '../../Widgets/my_custom_sd.dart';
 
-
 class AddProjectView extends StatefulWidget {
   const AddProjectView({super.key});
 
@@ -18,29 +17,9 @@ class _AddProjectViewState extends State<AddProjectView> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    addprojectController.getData();
-    addprojectController.userData();
+    addprojectController.project();
+
   }
-// to show alert in dialog box
-//   void _showAlert(BuildContext context) {
-//     showDialog(
-//       context: context,
-//       builder: (BuildContext context) {
-//         return AlertDialog(
-//           title: Text('Alert!'),
-//           content: Text('Please select a project'),
-//           actions: [
-//             TextButton(
-//               onPressed: () {
-//                 Navigator.pop(context);
-//               },
-//               child: Text('OK'),
-//             ),
-//           ],
-//         );
-//       },
-//     );
-//   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,12 +56,13 @@ class _AddProjectViewState extends State<AddProjectView> {
                     valFrom: 'projectName',
                     onChanged: (value) {
 
+
                       if(value!=null){
                         addprojectController.updateProjectId = value['projectId'].toString();
+                        addprojectController.module() ;
                         print("ProjectId:"+addprojectController.getProjectId.toString());
                         print(value);
                       }
-
                     }
 
                   ),
@@ -112,7 +92,7 @@ class _AddProjectViewState extends State<AddProjectView> {
                     padding: EdgeInsets.only(top: 10.0),
                     child: Row(
                       children: [
-                        Text("I want to able to",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
+                        Text("I want able to",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
                         Text("*",style: TextStyle(color: Colors.red,fontSize: 20),),
                       ],
                     ),
@@ -303,8 +283,8 @@ class _AddProjectViewState extends State<AddProjectView> {
                                 ]
                               );
                             }
-                            addprojectController.SaveData();
-                            if(addprojectController.getModuleId.toString()==""){
+                            //addprojectController.SaveData();
+                            else if(addprojectController.getModuleId.toString()==""){
                               Get.defaultDialog(
                                 title: "Alert!",
                                 middleText: "Please select Module",
@@ -315,6 +295,22 @@ class _AddProjectViewState extends State<AddProjectView> {
                                 ],
                               );
                             }
+                            else if (addprojectController.getpriorityId.toString()==""){
+                                Get.defaultDialog(
+                                  title: "Alert!",
+                                  middleText: "Please fill all fields",
+                                  backgroundColor: Colors.white,
+                                  actions: [
+                                    TextButton(onPressed: (){
+                                      Navigator.pop(context);
+                                    }, child: Text("Ok"))
+                                  ],
+                                );
+                              }
+
+
+
+
                             //Get.back();
                             //Navigator.push(context,MaterialPageRoute(builder:(context)=> const SaveView()));
 

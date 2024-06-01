@@ -38,5 +38,14 @@ class StoryController extends GetxController{
     storyList = val;
     update();
   }
-
+  Future <void> deleteData() async{
+    final res= await http.delete(Uri.parse("https://api.medvantage.tech:7097/api/StoryMaster/GetAllStory?userID=464"));
+    var response = jsonDecode(res.body);
+    if(response.statusCode==200){
+      print("Data deleted sucessfully!");
+    }
+    else{
+      print("Failed to delete data.Error:${response.statusCode}");
+    }
+  }
 }

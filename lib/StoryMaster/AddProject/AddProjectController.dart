@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
@@ -15,7 +16,7 @@ List get getuserList=> userList;
   update();
 
 }
-  getData() async{
+  project() async{
     final res = await http.get(Uri.parse("https://api.medvantage.tech:7097/api/ProjectMaster/GetProjectByUser?userID=464"));
     var data = jsonDecode(res.body);
     print(data.toString());
@@ -34,7 +35,7 @@ List get getuserList=> userList;
    listList=val;
    update();
  }
- userData() async{
+ module() async{
    print(projectId);
    final res= await http.get(Uri.parse("https://api.medvantage.tech:7097/api/ModuleMaster/GetAllModule?projectId=${projectId.toString()}&userId=464"));
    var data = jsonDecode(res.body);
@@ -125,5 +126,6 @@ TextEditingController wURLC = TextEditingController();
 TextEditingController playstoreC = TextEditingController();
 TextEditingController appstoreC = TextEditingController();
 TextEditingController noteC = TextEditingController();
+
 
 }
