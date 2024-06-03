@@ -4,10 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
+import '../storyController.dart';
+
 
 
 class AddprojectController extends GetxController{
 
+
+  StoryController storyController = StoryController();
 
 List userList=[];
 List get getuserList=> userList;
@@ -82,9 +86,7 @@ set updateSaveList(List val){
   saveList=val;
 }
 
-SaveData()async {
-
-
+void SaveData(context)async {
    var headers = {
     'Content-Type': 'application/json'
   };
@@ -113,7 +115,13 @@ SaveData()async {
   http.StreamedResponse response = await request.send();
   if (response.statusCode == 200) {
     print("API is runing");
+    Get.snackbar("", "success");
+    await storyController.getData();
     print(await response.stream.bytesToString());
+
+    print("@@@@@@@@@@@@@@@@@@@@@@@"+storyController.getData().toString());
+    Navigator.pop(context);
+
   } else {
     print("API is not runing");
     print(response.reasonPhrase);

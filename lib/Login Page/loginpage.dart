@@ -50,9 +50,6 @@ class _LogInPageState extends State<LogInPage> {
             toolbarHeight: 150,
             backgroundColor: Colors.indigoAccent,
             centerTitle: true,
-            actions: [],
-
-
           ),
 
           body:

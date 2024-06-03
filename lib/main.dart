@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:untitled2/homepage.dart';
 import 'package:untitled2/splashscreen.dart';
 import 'package:http/http.dart' as http;
-import 'package:untitled2/subjectWise.dart';
+import 'package:untitled2/ToggleButton.dart';
 
 import 'JsonData/jsonView.dart';
 import 'Login Page/loginpage.dart';
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
      // home: MyHomePage()
-     home: SubjectWise()
+     home: LogInPage()
 
         );
 

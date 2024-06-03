@@ -307,10 +307,10 @@ class _AddProjectViewState extends State<AddProjectView> {
                                   ],
                                 );
                               }
+                            else{
+                              addprojectController.SaveData(context);
 
-
-
-
+                            }
                             //Get.back();
                             //Navigator.push(context,MaterialPageRoute(builder:(context)=> const SaveView()));
 
@@ -323,13 +323,11 @@ class _AddProjectViewState extends State<AddProjectView> {
                             )
                           ),
                           child: Text('Save',style: TextStyle(color: Colors.white),),
+
                         ),
                       ),
                     ],
                   )
-
-
-
                 ],
               ),
 

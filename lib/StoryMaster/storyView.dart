@@ -95,7 +95,7 @@ class _StoryViewState extends State<StoryView> {
                                  Text(storyController.getStoryList[index]['projectName'].toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16,),),
                                    Row(
                                     children: [
-                                      Icon(Icons.menu,size:20,weight: 0.1,color: Colors.blue,),
+                                      Icon(Icons.menu_outlined,size:20,weight: 0.1,color: Colors.blue,),
                                       SizedBox(
                            width: 10,
                          ),
@@ -109,10 +109,13 @@ class _StoryViewState extends State<StoryView> {
                                               TextButton(onPressed: (){
                                                 Navigator.pop(context);
                                               },
-                                                  child: Text("Cancel")),
+                                                  child: Text("Cancel")
+                                              ),
                                               TextButton(onPressed: (){
-                                                storyController.deleteData();
+                                                print("deleted id"+ storyController.getStoryList[index]['id'].toString());
 
+                                                storyController.deleteData(storyController.getStoryList[index]['id'].toString());
+                                              Navigator.pop(context);
                                               }, child: Text("Ok",style: TextStyle(color: Colors.red),))
                                             ],
                                           );
