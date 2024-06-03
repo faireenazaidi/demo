@@ -11,6 +11,10 @@ class SubjectWise extends StatefulWidget {
 }
 
 class _SubjectWiseState extends State<SubjectWise> {
+  String displayText ='Farziba';
+  String displayMsg = 'Faireena';
+  bool isTextVisible =false;
+  bool isMsgVisible = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,21 +25,45 @@ class _SubjectWiseState extends State<SubjectWise> {
               Navigator.pop(context);
             },
             child: const Icon(Icons.arrow_back, color: Colors.white,)),
-        title: Text("Subject Wise Attendance",style: TextStyle(color: Colors.white),),
+        title: Text("Toggle Button",style: TextStyle(color: Colors.white),),
         backgroundColor: Colors.indigoAccent,
       ),
       body:
-       Column(
-         mainAxisAlignment: MainAxisAlignment.start,
-         children: [
-           Row(
-             mainAxisAlignment: MainAxisAlignment.start
-             ,
+       Padding(
+         padding: const EdgeInsets.all(8.0),
+         child: Column(
+           crossAxisAlignment: CrossAxisAlignment.start,
+           children: [
+             ElevatedButton(onPressed: (){
+               setState(() {
+                 isTextVisible = !isTextVisible;
+               });
 
-           )
-         ],
-       )
-
+             },
+               style:ElevatedButton.styleFrom(
+                 backgroundColor: Colors.green
+               ),
+               child: Text("Button 1"),
+             ),
+             if (isTextVisible)
+             Text(displayText,style: TextStyle(fontSize: 24),),
+             Padding(
+               padding: const EdgeInsets.only(top: 80.0),
+               child: Row(
+                 children: [
+                   ElevatedButton(onPressed: (){
+                     setState(() {
+                       isMsgVisible = !isMsgVisible;
+                     });
+                   }, child: Text("Button 2")),
+                 ],
+               ),
+             ),
+             if (isMsgVisible)
+              Text(displayMsg),
+           ],
+         ),
+       ),
     );
   }
 }
