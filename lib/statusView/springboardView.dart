@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:untitled2/statusView/profileView.dart';
 
-import 'categoryController.dart';
+import 'springboardController.dart';
 
 class SpringboardView extends StatefulWidget {
   const SpringboardView({super.key});
@@ -11,11 +12,15 @@ class SpringboardView extends StatefulWidget {
   @override
   State<SpringboardView> createState() => _SpringboardViewState();
 }
-
 class _SpringboardViewState extends State<SpringboardView> {
   get index => null;
   final SpringboardController springboardController = Get.put(SpringboardController());
-
+  int _selectedIndex = 0;
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,8 +57,6 @@ class _SpringboardViewState extends State<SpringboardView> {
         ),
 
 body:
-
-
 Padding(
   padding: const EdgeInsets.all(8.0),
   child: Column(
@@ -245,45 +248,8 @@ Padding(
                     ),
                   ],
                 )
-                // ListTile(
-                //   leading: Padding(
-                //     padding: const EdgeInsets.only(left:8.0),
-                //     child: CircleAvatar(
-                //       child: Icon(
-                //         Icons.person,
-                //       ),
-                //     ),
-                //   ),
-                //
-                //   trailing: const Text(" In progress",textAlign: TextAlign.end,
-                //     style:TextStyle(
-                //     color: CupertinoColors.black,backgroundColor: Colors.grey,
-                //   ),
-                //   ),
-                //   title: Row(
-                //     children: [
-                //
-                //   Padding(
-                //   padding: const EdgeInsets.only(bottom: 150.0),
-                //     child: Column(
-                //       mainAxisAlignment: MainAxisAlignment.start,
-                //       children: [
-                //         Column(
-                //           children: [
-                //             Text(springboardController.employeName[index]['name'].toString(),),
-                //                 Text(springboardController.employeName[index]['identity'].toString(),)
-                //           ],
-                //          // Text(springboardController.employeName[index]['name'.toString()],),
-                //
-                //         ),
-                //       ],
-                //     )
-                //
-                //
-                //   ),
-                //     ],
-                //   ),
-                // ),
+
+
               ),
             );
           },
@@ -293,7 +259,7 @@ Padding(
       ),
 ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
 
             icon: Icon(Icons.home_filled,color:Colors.grey),
@@ -301,17 +267,31 @@ Padding(
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.notifications,color: Colors.grey,),
-            label: 'Search',
+            label: 'Notifications',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.menu,color: Colors.grey,),
-            label: 'Favorites',
+            label: 'Menu',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.people,color: Colors.grey,),
+                icon: InkWell(
+                  onTap: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) =>  ProfileView()),
+                    );
+                  },
+                    child: Icon(Icons.people,color: Colors.grey,)),
             label: 'Profile',
           ),
         ],
+          type: BottomNavigationBarType.shifting,
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.black,
+          iconSize: 30,
+          onTap: _onItemTapped,
+          elevation: 5
+
       ),
     );
 
